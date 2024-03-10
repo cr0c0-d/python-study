@@ -23,3 +23,21 @@ name = '악어'
 age = 30
 print(f"안녕하세요, 저는 {name}이고 {age}살입니다")
 print(f"{1+2+3} ::: {sum([1, 2])}")
+
+# Raw String
+print('aa\tbb')     # 원래 \t는 탭 문자로 취급되지만
+print(r'aa\tbb')    # 문자열 앞에 r을 붙이면 Raw String으로 출력
+
+print('c:\aa\abc.txt')  # \a때문에 제대로 출력되지 않지만
+print(r'c:\aa\abc.txt') # r을 붙이면 해결 (경로 지정에 필수)
+
+# 행 연결하기
+# 코드 끝에 \를 붙이면 다음 행에 이어 쓸 수 있다
+total = 2 + \
+    3 * 4
+print(total)
+
+# 단 리스트는 \ 없이도 다음 행에 이어 쓸 수 있다
+arr = ['a', 'b'
+       , 'c']
+print(arr)
