@@ -38,3 +38,21 @@ comb = combinations(str, 2)
 
 for i in comb :
     print(i)
+
+
+print("#####################")
+
+from itertools import permutations
+# 순열(permutations)와는 다르다.
+# ['A', 'B', 'C'] 에서의 결과 차이
+
+arr = ['A', 'B', 'C']
+perm = permutations(arr, 2)
+for i in perm :
+    print(i)
+# ('A', 'B')
+# ('A', 'C')
+# ('B', 'A')
+# ('B', 'C')
+# ('C', 'A')
+# ('C', 'B')
