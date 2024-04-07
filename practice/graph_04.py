@@ -23,25 +23,25 @@ graph                                                                           
 def solution(graph, source) :
     n = len(graph)
     distance = [float("inf") for _ in range(n)]
-    predecessor = [float("inf") for _ in range(n)]
+    predecessor = [None for _ in range(n)]
     distance[source] = 0
-    predecessor[source] = None
 
     for i in range(n-1) :
         for mid in range(n) :
             for end, cost in graph[mid] :
-                # source부터 node까지의 거리 + node부터 연결된 각 노드까지의 거리
+                # 기록된 현재 노드의 최단거리 > (source부터 node까지의 거리 + node부터 연결된 각 노드까지의 거리)
                 if distance[end] > distance[mid] + cost :
-                    distance[end] = distance[mid] + cost
-                    predecessor[end] = mid
+                    distance[end] = distance[mid] + cost    # 최단거리 갱신
+                    predecessor[end] = mid  # 직전 노드 기록
 
+    # 음의 순환이 있는지 확인하는 과정
+    # 노드 개수-1만큼 반복한 이후에도 변화가 있으면 음의 순환이 있는 것
     for mid in range(n) :
         for end, cost in graph[mid] :
             if distance[end] > distance[mid] + cost :   # 음의 순환이 있음
                 return [-1]
             
     return [distance, predecessor]
-
 
 
 graph, source = [[(1, 5), (2, -1)], [(2, 2)], [(3, -2)], [(0, 2), (1, 6)]] , 0
